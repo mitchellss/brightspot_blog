@@ -44,6 +44,16 @@ public class BlogPostController {
         return blogPost;
     }
 
+    @GetMapping("/blog_post/latest")
+    public BlogPostModel latest() {
+        log.info("Getting latest blog post");
+        BlogPostModel blogPost = blogPostRepository.findFirstByOrderByDatePostedDesc();
+        if (blogPost == null) {
+            throw new RuntimeException("Post not found");
+        }
+        return blogPost;
+    }
+
     @PutMapping("/blog_post/{id}")
     public String editBlogPost(@RequestBody BlogPostModel post, @PathVariable String id) {
         log.info("Editing blog post with id " + id);

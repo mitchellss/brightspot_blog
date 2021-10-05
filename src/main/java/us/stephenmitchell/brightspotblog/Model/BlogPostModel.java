@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class BlogPostModel {
     private String subtitle;
 
     @Field("datePosted")
-    private String datePosted;
+    private Date datePosted;
 
     @Field("content")
     private String content;

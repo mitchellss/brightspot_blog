@@ -31,10 +31,21 @@ export default class ArticleBox extends Component {
         });
     }
 
+    splitText(text) {
+        return text.split("\n").map(str => <p>{str}</p>)
+    }
+
 
     render() {
         return (
-            <div>{this.state.title}</div>
+            <div className="article">
+                <div className="article-title">{this.state.title}</div>
+                <div className="article-subtitle">{this.state.subtitle}</div>
+                <div className="article-author">{this.state.author}</div>
+                <div className="article-date">{this.state.datePosted}</div>
+                <img className="article-image" src={this.state.imageUrl}/>
+                <div className="article-content">{this.splitText(this.state.content)}</div>
+            </div>
         );
     }
 }

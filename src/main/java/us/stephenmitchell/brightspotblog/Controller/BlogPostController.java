@@ -44,10 +44,21 @@ public class BlogPostController {
         return blogPost;
     }
 
+    @GetMapping("/blog_post/url_name/{urlName}")
+    public Optional<BlogPostModel> getByUrlName(@PathVariable String urlName) {
+        Optional<BlogPostModel> blogPost = blogPostRepository.findFirstByUrlName(urlName);
+        if (blogPost.isPresent()) {
+            log.info("Blog post found");
+        } else {
+            log.info("Blog post nonexistent");
+        }
+        return blogPost;
+    }
+
     @GetMapping("/blog_post/latest")
-    public BlogPostModel latest() {
+    public List<BlogPostModel> latest() {
         log.info("Getting latest blog post");
-        BlogPostModel blogPost = blogPostRepository.findFirstByOrderByDatePostedDesc();
+        List<BlogPostModel> blogPost = blogPostRepository.findFirst3ByOrderByDatePostedDesc();
         if (blogPost == null) {
             throw new RuntimeException("Post not found");
         }
@@ -66,6 +77,9 @@ public class BlogPostController {
             if (post.getSubtitle() != null) { blogPost.setSubtitle(post.getSubtitle()); };
             if (post.getDatePosted() != null) { blogPost.setDatePosted(post.getDatePosted()); };
             if (post.getContent() != null) { blogPost.setContent(post.getContent()); };
+            if (post.getAuthor() != null) { blogPost.setAuthor(post.getAuthor()); };
+            if (post.getImageUrl() != null) { blogPost.setImageUrl(post.getImageUrl()); };
+            if (post.getUrlName() != null) { blogPost.setUrlName(post.getUrlName()); };
             log.info(blogPost.toString());
             blogPostRepository.save(blogPost);
         } else {

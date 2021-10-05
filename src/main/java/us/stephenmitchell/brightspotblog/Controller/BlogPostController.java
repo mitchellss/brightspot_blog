@@ -17,7 +17,6 @@ public class BlogPostController {
     @Autowired
     BlogPostRepository blogPostRepository;
 
-
     @PostMapping("/blog_post")
     public String postBlogPost(@RequestBody BlogPostModel post) {
         log.info("Saving post");
@@ -43,5 +42,35 @@ public class BlogPostController {
             log.info("Blog post nonexistent");
         }
         return blogPost;
+    }
+
+    @PutMapping("/blog_post/{id}")
+    public String editBlogPost(@RequestBody BlogPostModel post, @PathVariable String id) {
+        log.info("Editing blog post with id " + id);
+        Optional<BlogPostModel> optionalBlogPost = blogPostRepository.findById(id);
+        if (optionalBlogPost.isPresent()) {
+            BlogPostModel blogPost = optionalBlogPost.get();
+            log.info("Blog post found");
+            blogPost.setId(id);
+            if (post.getTitle() != null) { blogPost.setTitle(post.getTitle()); };
+            if (post.getSubtitle() != null) { blogPost.setSubtitle(post.getSubtitle()); };
+            if (post.getDatePosted() != null) { blogPost.setDatePosted(post.getDatePosted()); };
+            if (post.getContent() != null) { blogPost.setContent(post.getContent()); };
+            log.info(blogPost.toString());
+            blogPostRepository.save(blogPost);
+        } else {
+            log.info("Blog post not found");
+        }
+        return optionalBlogPost.toString();
+    }
+
+    @DeleteMapping("/blog_post/{id}")
+    public String deleteBlogPost(@PathVariable String id) {
+        log.info("Deleting blog post with id " + id);
+        Optional<BlogPostModel> optionalBlogPost = blogPostRepository.findById(id);
+        if (optionalBlogPost.isPresent()) {
+            blogPostRepository.deleteById(id);
+        }
+        return(optionalBlogPost.toString());
     }
 }

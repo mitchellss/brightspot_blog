@@ -32,6 +32,15 @@ public class BlogPostModel {
     @Field("content")
     private String content;
 
+    @Field("author")
+    private String author;
+
+    @Field("imageUrl")
+    private String imageUrl;
+
+    @Field("urlName")
+    private String urlName;
+
     public String toString() {
         return "BlogPostModel(id=" + this.getId() + ", title=" + this.getTitle() + ", subtitle=" + this.getSubtitle() + ", datePosted=" + this.getDatePosted() + ")";
     }

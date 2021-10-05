@@ -4,9 +4,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import us.stephenmitchell.brightspotblog.Model.BlogPostModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BlogPostRepository extends MongoRepository<BlogPostModel, String> {
 
-    BlogPostModel findFirstByOrderByDatePostedDesc();
+    List<BlogPostModel> findFirst3ByOrderByDatePostedDesc();
+
+    Optional<BlogPostModel> findFirstByUrlName(String urlName);
 
 }

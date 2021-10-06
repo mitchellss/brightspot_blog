@@ -6,15 +6,21 @@ export default class ArticleBox extends Component {
         super(props);
     }
 
+    translateDate(dateString) {
+        const date = new Date(dateString);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
 
     render() {
         return (
             <div className="article-box">
                 <Link to={`/${this.props.urlName}`}>
                     <div className="linkbox">
-                        <img className="cropped-image" src={this.props.url}/>
-                        <div>{this.props.title}</div>
-                        <div>{this.props.subtitle}</div>
+                        <img className="cropped-image" src={this.props.imageUrl}/>
+                        <div className="article-box-title">{this.props.title}</div>
+                        <div className="article-box-subtitle">{this.props.subtitle}</div>
+                        <div className="article-box-date">{this.translateDate(this.props.datePosted)}</div>
                     </div>
                 </Link>
             </div>

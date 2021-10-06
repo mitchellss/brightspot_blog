@@ -6,28 +6,47 @@ export default class Body extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            article_1: ["Loading...", "Loading...", "", "test"],
-            article_2: ["Loading...", "Loading...", "", "test"],
-            article_3: ["Loading...", "Loading...", "", "test"]
+            recent_articles: [],
+            all_articles: []
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:8080/api/blog_post/latest').then((res) => {
             this.setState({
-                article_1: [res.data[0].title, res.data[0].subtitle, res.data[0].imageUrl, res.data[0].urlName],
-                article_2: [res.data[1].title, res.data[1].subtitle, res.data[1].imageUrl, res.data[1].urlName],
-                article_3: [res.data[2].title, res.data[2].subtitle, res.data[2].imageUrl, res.data[2].urlName]
+                recent_articles: res.data
             });
         });
+
+        axios.get('http://localhost:8080/api/blog_post/').then((res) => {
+            this.setState({
+                all_articles: res.data
+            });
+        });
+
+    }
+
+    renderNArticleBoxes(articles) {
+        return articles.map(artc => <ArticleBox 
+            title={artc.title}
+            subtitle={artc.subtitle}
+            imageUrl={artc.imageUrl}
+            datePosted={artc.datePosted}
+            urlName={artc.urlName}
+        />);
     }
 
     render() {
         return (
-            <div className="container body">
-                <ArticleBox title={this.state.article_1[0]} subtitle={this.state.article_1[1]} url={this.state.article_1[2]} urlName={this.state.article_1[3]}/>
-                <ArticleBox title={this.state.article_2[0]} subtitle={this.state.article_2[1]} url={this.state.article_2[2]} urlName={this.state.article_2[3]}/>
-                <ArticleBox title={this.state.article_3[0]} subtitle={this.state.article_3[1]} url={this.state.article_3[2]} urlName={this.state.article_3[3]}/>
+            <div>
+                <p className="article-intro-statement">Most Recent Posts:</p>
+                <div className="container body">
+                    {this.renderNArticleBoxes(this.state.recent_articles)}
+                </div>
+                <p className="article-intro-statement">All Posts:</p>
+                <div className="container body">
+                    {this.renderNArticleBoxes(this.state.all_articles)}
+                </div>
             </div>
         )
     }

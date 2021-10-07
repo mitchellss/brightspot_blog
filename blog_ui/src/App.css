@@ -20,6 +20,39 @@ body {
   align-items: center;
 }
 
+.header-title {
+  width: 20vw;
+}
+
+.right-aligned-header-options-container {
+  width: 100%;
+  display: flex;
+  flex-flow:row-reverse;
+}
+
+.new-post-button {
+  border: solid white;
+  padding: 5px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.new-post-button:hover {
+  padding: 5px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
 .body {
   justify-content: center;
   flex-flow: row wrap;
@@ -137,23 +170,86 @@ body {
   opacity: 1;
 }
 
+.comments-header {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
 .reply-button {
-  border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 0 0 0;
+  margin: 2px 0 0 0;
   border: solid;
   border-color: black;
-  border-width: thin;
+  border-width: 3px;
   height: 20px;
   width: 40px;
-  background-color: rgb(219, 219, 219);
+  background-color: white;
   font-size: 13px;
   text-align: center;
 }
 
+.create-comment-container {
+  display: flex;
+}
+
+.create-comment-name-container {
+  width: 40%;
+  padding: 10px;
+}
+
+.create-comment-content-container {
+  width: 60%;
+  padding: 10px;
+}
+
+.name-text-imput {
+  width: 100%;
+}
+
+.content-text-input {
+  width: 100%;
+}
+
+.post-comment-button {
+  display: flex;
+  width: 20%;
+  border:solid black;
+  margin: 10px;
+  align-items:center;
+  justify-content:center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.post-comment-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.cancel-reply-button {
+  display: flex;
+  width: 20%;
+  border:solid black;
+  margin: 10px;
+  align-items:center;
+  justify-content:center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.cancel-reply-button:hover {
+  background-color: black;
+  color: white;
+}
+
 .reply-button:hover {
-  border-color: rgb(219, 219, 219);
   background-color: rgb(0, 0, 0);
-  color: rgb(219, 219, 219);
+  color: white;
 }
 
 .linkbox {

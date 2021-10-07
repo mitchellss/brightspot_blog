@@ -1,9 +1,19 @@
 package us.stephenmitchell.brightspotblog.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Date;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Document("blog_posts")
 public class BlogPostModel {
 
@@ -17,59 +27,21 @@ public class BlogPostModel {
     private String subtitle;
 
     @Field("datePosted")
-    private String datePosted;
+    private Date datePosted;
 
     @Field("content")
     private String content;
 
-    public BlogPostModel(String id, String title, String subtitle, String datePosted, String content) {
-        this.id = id;
-        this.title = title;
-        this.subtitle = subtitle;
-        this.datePosted = datePosted;
-        this.content = content;
-    }
+    @Field("author")
+    private String author;
 
-    public BlogPostModel() {
-    }
+    @Field("imageUrl")
+    private String imageUrl;
 
-    public String getId() {
-        return this.id;
-    }
+    @Field("urlName")
+    private String urlName;
 
-    public String getTitle() {
-        return this.title;
-    }
-
-    public String getSubtitle() {
-        return this.subtitle;
-    }
-
-    public String getDatePosted() {
-        return this.datePosted;
-    }
-
-    public String getContent() {
-        return this.content;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
-    }
-
-    public void setDatePosted(String datePosted) {
-        this.datePosted = datePosted;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public String toString() {
+        return "BlogPostModel(id=" + this.getId() + ", title=" + this.getTitle() + ", subtitle=" + this.getSubtitle() + ", datePosted=" + this.getDatePosted() + ")";
     }
 }

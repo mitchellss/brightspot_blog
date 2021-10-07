@@ -4,6 +4,7 @@ import { Component } from "react";
 export default class Comment extends Component {
     constructor(props) {
         super(props);
+        this.changeReplyTo = this.changeReplyTo.bind(this);
     }
 
 
@@ -18,13 +19,18 @@ export default class Comment extends Component {
         width: `${50-this.props.level * 3}vw`
     }
 
+    changeReplyTo() {
+        console.log(this.props.level);
+        this.props.changeReplyTo(`Reply To ${this.props.author}:`, this.props.id, this.props.level + 1);
+    }
+
     render() {
         return (
         <div className="comment-box" style={this.a}>
             <div className="comment-header">
                 <div className="comment-author">{this.props.author}</div>
                 <div className="comment-date">{this.translateDate(this.props.datePosted)}</div>
-                <div className="reply-button">reply</div>
+                <div className="reply-button disable-select" onClick={this.changeReplyTo}>Reply</div>
             </div>
             <div className="comment-content">{this.props.content}</div>
         </div>)

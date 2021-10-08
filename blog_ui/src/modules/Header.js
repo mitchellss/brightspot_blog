@@ -14,7 +14,9 @@ export default class Header extends Component {
                     <div className="header-title disable-select">Totally Real Blog</div>
                 </Link>
                 <div className="right-aligned-header-options-container">
-                    <div className="new-post-button disable-select">New Post</div>
+                    <Link to={"/create"}>
+                        <div className="new-post-button disable-select">New Post</div>
+                    </Link>
                 </div>
             </div>
         )

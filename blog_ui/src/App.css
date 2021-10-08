@@ -63,6 +63,14 @@ body {
   font-weight: bold;
 }
 
+.arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .article {
   width: 50vw;
   margin: 10px auto;
@@ -77,12 +85,12 @@ body {
 .article-subtitle {
   font-size: large;
   font-weight: bold;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial Narrow Bold', sans-serif;
   margin: 5px 0px;
 }
 
 .article-date {
-  margin: 0px;
+  margin: 0px;  
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -114,7 +122,7 @@ body {
 }
 
 .article-box-title {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial Narrow Bold', sans-serif;
   font-style: bold;
   font-size: 20px;
   margin: 10px;
@@ -172,23 +180,17 @@ body {
 
 .comments-header {
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
   font-weight: bold;
 }
 
 .reply-button {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
   padding: 2px 0 0 0;
   margin: 2px 0 0 0;
-  border: solid;
-  border-color: black;
-  border-width: 3px;
   height: 20px;
   width: 40px;
-  background-color: white;
   font-size: 13px;
-  text-align: center;
 }
 
 .create-comment-container {
@@ -214,42 +216,15 @@ body {
 }
 
 .post-comment-button {
-  display: flex;
   width: 20%;
-  border:solid black;
   margin: 10px;
-  align-items:center;
-  justify-content:center;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-}
-
-.post-comment-button:hover {
-  background-color: black;
-  color: white;
 }
 
 .cancel-reply-button {
-  display: flex;
   width: 20%;
-  border:solid black;
   margin: 10px;
-  align-items:center;
-  justify-content:center;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-}
-
-.cancel-reply-button:hover {
-  background-color: black;
-  color: white;
-}
-
-.reply-button:hover {
-  background-color: rgb(0, 0, 0);
-  color: white;
 }
 
 .linkbox {
@@ -269,6 +244,52 @@ body {
   font-style: bold;
   text-align: center;
   font-size: x-large;
+}
+
+.create-article-container {
+  width: 80vw;
+  margin: 10px auto;
+}
+
+.create-article-publish-button {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+}
+
+.create-article-cancel-button {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.create-article-cancel-button {
+  text-decoration: none;
+}
+
+.create-article-content-input {
+  width: 50vw;
+  height: 300px;
+}
+
+.custom-button {
+  border: solid black;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.custom-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.create-article-button-container {
+  display: flex;
 }
 
 a { color:white }

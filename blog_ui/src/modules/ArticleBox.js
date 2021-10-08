@@ -15,7 +15,7 @@ export default class ArticleBox extends Component {
     render() {
         return (
             <div className="article-box">
-                <Link to={`/${this.props.urlName}`}>
+                <Link to={`/article/${this.props.urlName}`}>
                     <div className="linkbox">
                         <img className="cropped-image" src={this.props.imageUrl}/>
                         <div className="article-box-title">{this.props.title}</div>

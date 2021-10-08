@@ -4,13 +4,15 @@ import Body from './modules/Body';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ArticlePage from './modules/ArticlePage';
+import CreateArticle from './modules/CreateArticle';
 
 function App() {
   return (
     <Router>
       <Header/>
-      <Route path="/" exact component={Body}/>
-      <Route path="/:urlName"  component={ArticlePage}/>
+      <Route exact path="/" component={Body}/>
+      <Route exact path="/create" exact component={CreateArticle}/>
+      <Route path="/article/:urlName" component={ArticlePage}/>
     </Router>
   );
 }

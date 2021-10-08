@@ -68,18 +68,19 @@ export default class CommentSection extends Component {
                 "parentId": this.state.replyToId
             };
 
-            axios.post("http://localhost:8080/api/blog_comment", requestData);
-
-            this.setState({
-                loading: true
-            });
-
-            axios.get(`http://localhost:8080/api/blog_comment/article/${this.props.articleId}`).then((res) => {
+            axios.post("http://localhost:8080/api/blog_comment", requestData).then(() => {
                 this.setState({
-                    allComments: res.data,
-                    loading: false
+                    loading: true
+                });
+                axios.get(`http://localhost:8080/api/blog_comment/article/${this.props.articleId}`).then((res) => {
+                    this.setState({
+                        allComments: res.data,
+                        loading: false
+                    });
                 });
             });
+
+
 
         } else {
             console.log("Forms not filled");
@@ -107,15 +108,15 @@ export default class CommentSection extends Component {
                     <div className="comments-header">Comments:</div>
                     <div className="create-comment-container">
                         <div className="create-comment-name-container">
-                            <div>Name:</div>
+                            <div className="arial">Name:</div>
                             <input className="name-text-imput" type="text" ref={el => this.author = el}/>
                         </div>
                         <div className="create-comment-content-container">
-                            <div>{this.state.replyToString}</div>
+                            <div className="arial">{this.state.replyToString}</div>
                             <input className="content-text-input" type="text" ref={el => this.content = el}/>
                         </div>
-                        <div className="post-comment-button disable-select" onClick={this.postComment}>Comment</div>
-                        <div className="cancel-reply-button disable-select" onClick={this.cancelComment}>Cancel</div>
+                        <div className="post-comment-button custom-button disable-select" onClick={this.postComment}>Comment</div>
+                        <div className="cancel-reply-button custom-button disable-select" onClick={this.cancelComment}>Cancel</div>
                     </div>
                     {this.generateComments(null)}
                 </div>

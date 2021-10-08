@@ -27,12 +27,12 @@ export default class Comment extends Component {
     render() {
         return (
         <div className="comment-box" style={this.a}>
-            <div className="comment-header">
-                <div className="comment-author">{this.props.author}</div>
-                <div className="comment-date">{this.translateDate(this.props.datePosted)}</div>
-                <div className="reply-button disable-select" onClick={this.changeReplyTo}>Reply</div>
+            <div className="comment-header arial">
+                <div className="comment-author arial bold">{this.props.author}</div>
+                <div className="comment-date arial">{this.translateDate(this.props.datePosted)}</div>
+                <div className="reply-button custom-button disable-select" onClick={this.changeReplyTo}>Reply</div>
             </div>
-            <div className="comment-content">{this.props.content}</div>
+            <div className="comment-content arial">{this.props.content}</div>
         </div>)
         ;
     }
